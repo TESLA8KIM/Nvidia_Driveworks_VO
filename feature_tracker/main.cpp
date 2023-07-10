@@ -1,7 +1,7 @@
 //============== Sample_Feature_tracker code modified by Joon Oh KIM.==============
 //This code is to run the Visual Odometry at the Nvidia Drive AGX Xavier
 //If you have any questions about Driveworks code, please send the e-mail to me.
-//E-mail : joonohkim@gm.gist.ac.kr
+
 //=================================================================================
 #include <dw/core/VersionCurrent.h>
 #include <framework/DriveWorksSample.hpp> //This is the main operation part. It operates the onProcess() and onRender().
