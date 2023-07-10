@@ -729,8 +729,7 @@ public:
 
  		{
  			ProfileCUDASection s(getProfilerCUDA(), "computePyramid");
- 			CHECK_CUDA_ERROR(dwImageFilter_computePyramid(&pyramidCurrent, plane,
- 														  0, m_context));
+ 			CHECK_CUDA_ERROR(dwImageFilter_computePyramid(&pyramidCurrent, plane, 0, m_context));
  		}
 
  		{
