@@ -141,14 +141,14 @@ public:
         uint32_t pyramidLevel               = std::stoi(getArgument("pyramidLevel"));
         uint32_t detectLevel                = std::stoi(getArgument("detectLevel"));
         uint32_t numEvenDistributionPerCell = std::stoi(getArgument("numEvenDistributionPerCell"));
-        uint32_t harrisRadius               = std::stoi(getArgument("harrisRadius"));
+        uint32_t fastRadius               = std::stoi(getArgument("fastRadius"));
         uint32_t nmsRadius                  = std::stoi(getArgument("NMSRadius"));
         uint32_t maskType                   = std::stoi(getArgument("maskType"));
         uint32_t enableMaskAdjustment       = std::stoi(getArgument("enableMaskAdjustment"));
 
         float32_t scoreThreshold  = std::stof(getArgument("scoreThreshold"));
         float32_t detailThreshold = std::stof(getArgument("detailThreshold"));
-        float32_t harrisK         = std::stof(getArgument("harrisK"));
+        float32_t fastK         = std::stof(getArgument("fastK"));
 
         uint32_t trackMode               = std::stoi(getArgument("trackMode"));
         uint32_t windowSize              = std::stoi(getArgument("windowSize"));
@@ -274,8 +274,8 @@ public:
             detectorConfig.scoreThreshold             = scoreThreshold;
             detectorConfig.detailThreshold            = detailThreshold;
             detectorConfig.numEvenDistributionPerCell = numEvenDistributionPerCell;
-            detectorConfig.harrisRadius               = harrisRadius;
-            detectorConfig.harrisK                    = harrisK;
+            detectorConfig.fastRadius               = fastRadius;
+            detectorConfig.fastK                    = fastK;
             detectorConfig.NMSRadius                  = nmsRadius;
             detectorConfig.isMaskAdjustmentEnabled    = enableMaskAdjustment;
             detectorConfig.maskType                   = static_cast<dwFeature2DSelectionMaskType>(maskType);
@@ -812,8 +812,8 @@ int main(int argc, const char** argv)
 							ProgramArguments::Option_t("pyramidLevel", "5"),
 
 							ProgramArguments::Option_t("detectMode", "1", //0 for feature matching
-													 "--detectMode=0, use standard harris detector;"
-													 "--detectMode=1, use extended harris detector"),
+													 "--detectMode=0, use standard fast detector;"
+													 "--detectMode=1, use extended fast detector"),
 							ProgramArguments::Option_t("detectLevel", "0"),
 							ProgramArguments::Option_t("cellSize", "64"),
 							ProgramArguments::Option_t("scoreThreshold", "4.05e-6"),
@@ -821,10 +821,10 @@ int main(int argc, const char** argv)
 													 "features with score > detailThreshold will be kept, valid only when --detectMode=0"),
 							ProgramArguments::Option_t("numEvenDistributionPerCell", "5",
 													 "number of features even distribution per cell, valid only when --detectMode=0"),
-							ProgramArguments::Option_t("harrisK", "0.05",
-													 "harris K during detection, valid only when --detectMode=1"),
-							ProgramArguments::Option_t("harrisRadius", "1",
-													 "harris radius, valid only when --detectMode=1"),
+							ProgramArguments::Option_t("fastK", "0.05",
+													 "fast K during detection, valid only when --detectMode=1"),
+							ProgramArguments::Option_t("fastRadius", "1",
+													 "fast radius, valid only when --detectMode=1"),
 							ProgramArguments::Option_t("NMSRadius", "2",
 													 "non-maximum suppression filter radius, valid only when --detectMode=1"),
 							ProgramArguments::Option_t("maskType", "1",
@@ -849,7 +849,7 @@ int main(int argc, const char** argv)
 							ProgramArguments::Option_t("nccUpdateThreshold", "0.95"),
 							ProgramArguments::Option_t("nccKillThreshold", "0.3"),
                           },
-                          "Camera Tracker sample which tracks Harris features and playback the results in a GL window.");
+                          "Camera Tracker sample which tracks fast features and playback the results in a GL window.");
 
     // -------------------
     // initialize and start a window application
