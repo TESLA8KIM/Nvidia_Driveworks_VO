@@ -24,8 +24,8 @@ The feature tracker sample, sample_feature_tracker, accepts the following option
                             --scoreThreshold=[fp_number]
                             --detailThreshold=[fp_number]
                             --numEvenDistributionPerCell=[int_number]
-                            --harrisK=[fp_number]
-                            --harrisRadius=[int_number]
+                            --fastK=[fp_number]
+                            --fastRadius=[int_number]
                             --NMSRadius=[int_number]
                             --maskType=[0|1]
                             --enableMaskAdjustment=[0|1]
@@ -60,8 +60,8 @@ where
 
     --detectMode=[0|1]
         Defines detecting mode
-        0: Standard Harris corner detector with fixed pipeline.
-        1: Extended Harris corner detector, more flexible but takes more time.
+        0: Standard corner detector with fixed pipeline.
+        1: Extended corner detector, more flexible but takes more time.
         Default value: 0
 
     --cellSize=[int_number]
@@ -84,13 +84,13 @@ where
         This parameter only takes effect when --detectMode=0.
         Default value: 5
 
-    --harrisK=[fp_number]
-        Defines Harris K value.
+    --fastK=[fp_number]
+        Defines K value.
         This parameter only takes effect when --detectMode=1.
         Default value: 0.05
 
-    --harrisRadius=[int_number]
-        Defines Harris radius.
+    --fastRadius=[int_number]
+        Defines radius.
         This parameter only takes effect when --detectMode=1.
         Default value: 1
 
